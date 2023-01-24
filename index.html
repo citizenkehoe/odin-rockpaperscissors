@@ -5,15 +5,15 @@
         <title>Project: Rock Paper Scissors</title>
         <script>
             function textWin(x,y) {
-                console.log(`${x} beats ${y}; you win!`);
+                return `${x} beats ${y}; you win!`;
             }
 
             function textLose(x,y) {
-                console.log(`${x} beats ${y}; you lose!`);
+                return `${x} beats ${y}; you lose!`;
             }
 
             function textTie(x) {
-                console.log(`You both chose ${x}; try again.`);
+                return `You both chose ${x}; try again.`;
             }
 
             function getComputerChoice() {
@@ -41,46 +41,70 @@
                     case "Rock":
                         switch (computerSelection) {
                             case "Rock":
-                                textTie(playerSelection);
+                                return "tie";
                                 break;
                             case "Paper":
-                                textLose(computerSelection, playerSelection);
+                                return "lose";
                                 break;
                             case "Scissors":
-                                textWin(playerSelection, computerSelection);
+                                return "win";
                                 break;
                         };
                         break;
                     case "Paper":
                         switch (computerSelection) {
                             case "Paper":
-                                textTie(playerSelection);
+                                return "tie";
                                 break;
                             case "Scissors":
-                                textLose(computerSelection, playerSelection);
+                                return "lose";
                                 break;
                             case "Rock":
-                                textWin(playerSelection, computerSelection);
+                                return "win";
                                 break;
                         }
                         break;
                     case "Scissors":
                         switch (computerSelection) {
                             case "Scissors":
-                                textTie(playerSelection);
+                                return "tie";
                                 break;
                             case "Rock":
-                                textLose(computerSelection, playerSelection);
+                                return "lose";
                                 break;
                             case "Paper":
-                                textWin(playerSelection, computerSelection);
+                                return "win";
                                 break;
                         }
                         break;
+                }
+            }
+
+            function bestOfFive() {
+                let playerScore = 0;
+                let computerScore = 0;
+                for (let i = 0; i < 5; i++) {
+                    let playerChoice = window.prompt("Rock, paper, or scissors?");
+                    let game = playGame(playerChoice, getComputerChoice());
+                    switch (game) {
+                        case "tie":
+                            i--;
+                            console.log("A tie!");
+                            break;
+                        case "lose":
+                            computerScore++;
+                            console.log("You lose!");
+                            break;
+                        case "win":
+                            playerScore++;
+                            console.log("You win!");
+                            break;
                     }
                 }
+                return `Player: ${playerScore} // Computer: ${computerScore}`
+            }
 
-            playGame("scissors", getComputerChoice());
+            console.log(bestOfFive());
         </script>
     </head>
     <body></body>
