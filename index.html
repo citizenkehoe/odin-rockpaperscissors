@@ -5,25 +5,78 @@
         <title>Project: Rock Paper Scissors</title>
         <script>
             function textWin(x,y) {
-                return `${x} beats ${y}; you win!`;
+                console.log(`${x} beats ${y}; you win!`);
             }
 
             function textLose(x,y) {
-                return `${x} beats ${y}; you lose!`;
+                console.log(`${x} beats ${y}; you lose!`);
             }
 
             function textTie(x) {
-                return `You both chose ${x}; try again.`;
+                console.log(`You both chose ${x}; try again.`);
             }
 
             function getComputerChoice() {
-
+                let randInt = Math.floor(Math.random() * 3) + 1;
+                let choice;
+                switch (randInt) {
+                    case 1:
+                        choice = "Rock";
+                        break;
+                    case 2:
+                        choice = "Paper";
+                        break;
+                    case 3:
+                        choice = "Scissors";
+                        break;
+                }
+                return choice;
             }
 
-            // set value for computer
-            // get value from player
-            // compare values
-            // determine winner
+            function playGame(playerSelection, computerSelection) {
+                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1);
+
+                if (playerSelection = "Rock") {
+                    switch (computerSelection) {
+                        case "Rock":
+                            textTie(playerSelection);
+                            break;
+                        case "Paper":
+                            textLose(computerSelection, playerSelection);
+                            break;
+                        case "Scissors":
+                            textWin(playerSelection, computerSelection);
+                            break;
+                    }
+                } else if (playerSelection = "Paper") {
+                    switch (computerSelection) {
+                        case "Paper":
+                            textTie(playerSelection);
+                            break;
+                        case "Scissors":
+                            textLose(computerSelection, playerSelection);
+                            break;
+                        case "Rock":
+                            textWin(playerSelection, computerSelection);
+                            break;
+                    }
+                } else if (playerSelection = "Scissors") {
+                    switch (computerSelection) {
+                        case "Scissors":
+                            textTie(playerSelection);
+                            break;
+                        case "Rock":
+                            textLose(computerSelection, playerSelection);
+                            break;
+                        case "Paper":
+                            textWin(playerSelection, computerSelection);
+                            break;
+                    }
+                }
+            }
+
+            playGame("rock", getComputerChoice());
         </script>
     </head>
     <body></body>
