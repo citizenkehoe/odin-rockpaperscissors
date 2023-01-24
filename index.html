@@ -37,46 +37,50 @@
                 playerSelection = playerSelection.toLowerCase();
                 playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1);
 
-                if (playerSelection = "Rock") {
-                    switch (computerSelection) {
-                        case "Rock":
-                            textTie(playerSelection);
-                            break;
-                        case "Paper":
-                            textLose(computerSelection, playerSelection);
-                            break;
-                        case "Scissors":
-                            textWin(playerSelection, computerSelection);
-                            break;
-                    }
-                } else if (playerSelection = "Paper") {
-                    switch (computerSelection) {
-                        case "Paper":
-                            textTie(playerSelection);
-                            break;
-                        case "Scissors":
-                            textLose(computerSelection, playerSelection);
-                            break;
-                        case "Rock":
-                            textWin(playerSelection, computerSelection);
-                            break;
-                    }
-                } else if (playerSelection = "Scissors") {
-                    switch (computerSelection) {
-                        case "Scissors":
-                            textTie(playerSelection);
-                            break;
-                        case "Rock":
-                            textLose(computerSelection, playerSelection);
-                            break;
-                        case "Paper":
-                            textWin(playerSelection, computerSelection);
-                            break;
+                switch (playerSelection) {
+                    case "Rock":
+                        switch (computerSelection) {
+                            case "Rock":
+                                textTie(playerSelection);
+                                break;
+                            case "Paper":
+                                textLose(computerSelection, playerSelection);
+                                break;
+                            case "Scissors":
+                                textWin(playerSelection, computerSelection);
+                                break;
+                        };
+                        break;
+                    case "Paper":
+                        switch (computerSelection) {
+                            case "Paper":
+                                textTie(playerSelection);
+                                break;
+                            case "Scissors":
+                                textLose(computerSelection, playerSelection);
+                                break;
+                            case "Rock":
+                                textWin(playerSelection, computerSelection);
+                                break;
+                        }
+                        break;
+                    case "Scissors":
+                        switch (computerSelection) {
+                            case "Scissors":
+                                textTie(playerSelection);
+                                break;
+                            case "Rock":
+                                textLose(computerSelection, playerSelection);
+                                break;
+                            case "Paper":
+                                textWin(playerSelection, computerSelection);
+                                break;
+                        }
+                        break;
                     }
                 }
-            }
 
-            playGame("rock", getComputerChoice());
+            playGame("scissors", getComputerChoice());
         </script>
     </head>
     <body></body>
