@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    gap: 15px;
+    background-color: red;
+}
+
+.main-panel, .score-panel {
+    background-color: bisque;
+    padding: 35px;
+    height: 100vh;
+}
+
+.main-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.score-panel {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 30px;
+    font-size: 20px;
+}
