@@ -27,27 +27,28 @@ function currentRound() {
 }
 
 // capture player choice
+let playerChoice;
 function getPlayerChoice() {
-    let playerChoice = this.getAttribute('data-choice');
+    playerChoice = this.getAttribute('data-choice');
     return playerChoice;
 }
 
 // create computer choice
-let choice;
+let computerChoice;
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3) + 1;
     switch (randInt) {
         case 1:
-            choice = "rock";
+            computerChoice = "rock";
             break;
         case 2:
-            choice = "paper";
+            computerChoice = "paper";
             break;
         case 3:
-            choice = "scissors";
+            computerChoice = "scissors";
             break;
     }
-    return choice;
+    return computerChoice;
 }
 
 // compare values
@@ -97,13 +98,14 @@ function playGame(playerSelection, computerSelection) {
 
 function makeRoundSummary() {
     const newRound = document.createElement('div');
-    newRound.innerHTML = `<p>Round ${round}:</p><p>You chose CHOICE</p><p>Computer chose ${choice}</p><p>THE RESULT</p>`;
+    newRound.innerHTML = `<p>Round ${round}:</p><p>You chose ${playerChoice}</p><p>Computer chose ${computerChoice}</p><p>THE RESULT</p>`;
     document.getElementById('play-history').appendChild(newRound);
 }
 
 let buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('click', currentRound);
+    button.addEventListener('click', getPlayerChoice);
     button.addEventListener('click', getComputerChoice);
     button.addEventListener('click', makeRoundSummary);
 });
