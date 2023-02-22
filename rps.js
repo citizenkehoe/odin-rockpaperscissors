@@ -39,13 +39,13 @@ function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3) + 1;
     switch (randInt) {
         case 1:
-            computerChoice = "rock";
+            computerChoice = "🪨";
             break;
         case 2:
-            computerChoice = "paper";
+            computerChoice = "📃";
             break;
         case 3:
-            computerChoice = "scissors";
+            computerChoice = "✂️";
             break;
     }
     return computerChoice;
