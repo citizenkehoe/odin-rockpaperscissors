@@ -22,6 +22,8 @@ let round = 0;
 function currentRound() {
     round += 1;
     console.log(round);
+    // document.getElementById('round-count').textContent = round;
+    return round;
 }
 
 // capture player choice
@@ -31,9 +33,9 @@ function getPlayerChoice() {
 }
 
 // create computer choice
+let choice;
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3) + 1;
-    let choice;
     switch (randInt) {
         case 1:
             choice = "rock";
@@ -93,5 +95,15 @@ function playGame(playerSelection, computerSelection) {
     }
 }
 
+function makeRoundSummary() {
+    const newRound = document.createElement('div');
+    newRound.innerHTML = `<p>Round ${round}:</p><p>You chose CHOICE</p><p>Computer chose ${choice}</p><p>THE RESULT</p>`;
+    document.getElementById('play-history').appendChild(newRound);
+}
+
 let buttons = document.querySelectorAll('button');
-buttons.forEach(button => button.addEventListener('click', currentRound));
+buttons.forEach(button => {
+    button.addEventListener('click', currentRound);
+    button.addEventListener('click', getComputerChoice);
+    button.addEventListener('click', makeRoundSummary);
+});
