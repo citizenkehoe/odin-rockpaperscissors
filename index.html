@@ -3,13 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Project: Rock Paper Scissors</title>
+        
+        <!-- css -->
         <link rel="stylesheet" href="./style.css">
+
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- javascript -->
         <script src="./rps.js" defer></script>
     </head>
     <body>
         <div class="main-panel">
-            <h1>Rock — Paper — Scissors</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia adipisci sint laborum labore magnam atque pariatur sunt deserunt eos vero quidem tempore architecto ducimus omnis culpa, iure qui, minima natus?</p>
+            <h1 class="main-header">Rock/Paper/Scissors</h1>
+            <div class="main-copy">
+                <p>From the dawn of time, three elemental forces—locked in eternal tension—have given shape and life to our universe. None of us can escape their influence, nor can they fully escape each other's ambition.</p>
+                <p>Which will you choose, traveler? The stoic rock? The deft paper? Or the fiery scissors? Choose well, but remember: no choice is better or worse than the others.</p>
+                <p>First to five wins.</p>
+            </div>
             <div class="buttons">
                 <button data-choice="🪨">🪨 Rock 🪨</button>
                 <button data-choice="📃">📃 Paper 📃</button>
@@ -17,8 +30,13 @@
             </div>
         </div>
         <div id="score-panel" class="score-panel">
-            <h1>Score</h1>
-            <p>0 (player) vs. 0 (computer)</p>
+            <h2 class="score-header">Score</h2>
+            <div class="score-copy">
+                <p><span class="big-number">0</span><br />(player)</p>
+                <p>vs.</p>
+                <p><span class="big-number">0</span><br />(computer)</p>
+            </div>
+            <hr />
             <div id="play-history"></div>
         </div>
     </body>

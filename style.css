@@ -5,14 +5,15 @@
 }
 
 body {
-    display: flex;
-    gap: 15px;
     background-color: red;
+    display: flex;
+    font-family: 'Cabin', sans-serif;
+    gap: 15px;
 }
 
 .main-panel, .score-panel {
     background-color: bisque;
-    padding: 35px;
+    padding: 40px;
     height: 100vh;
 }
 
@@ -24,8 +25,10 @@ body {
 }
 
 .score-panel {
-    width: 300px;
     flex-shrink: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    width: 300px;
 }
 
 #play-history {
@@ -36,11 +39,56 @@ body {
 
 .buttons {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    margin-top: 45px;
 }
 
 button {
     width: 100%;
     padding: 30px;
     font-size: 20px;
+}
+
+hr {
+    border-color: red;
+    margin: 20px 0;
+}
+
+.main-header, .score-header, .score-copy * {
+    text-align: center;
+}
+
+.main-header {
+    font-size: 30pt;
+    margin-bottom: .5em;
+}
+
+.score-header {
+    font-size: 21pt;
+}
+
+.main-copy {
+    font-size: 14pt;
+    margin: 0 auto;
+    max-width: 50ch;
+}
+
+.main-copy * {
+    line-height: 1.3;
+    margin-bottom: 1.25em;
+}
+
+.score-copy {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.big-number {
+    font-size: 300%;
+    font-weight: 700;
+}
+
+.make-red {
+    color: red;
 }

@@ -98,7 +98,7 @@ function playGame(playerSelection, computerSelection) {
 
 function makeRoundSummary() {
     const newRound = document.createElement('div');
-    newRound.innerHTML = `<p>Round ${round}:</p><p>You chose ${playerChoice}</p><p>Computer chose ${computerChoice}</p><p>THE RESULT</p>`;
+    newRound.innerHTML = `<p class="make-red">Round ${round}</p><p>You chose ${playerChoice}</p><p>Computer chose ${computerChoice}</p><p>THE RESULT</p>`;
     document.getElementById('play-history').appendChild(newRound);
 }
 
