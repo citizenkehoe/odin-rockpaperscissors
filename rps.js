@@ -11,6 +11,14 @@ function textTie(x) {
 }
 
 
+let playerChoice;
+let computerChoice;
+let playerScore = 0;
+let computerScore = 0;
+let playerScoreHole = document.getElementById('player-hole');
+let compScoreHole = document.getElementById('comp-hole');
+let result;
+
 // on button press
 
 
@@ -21,20 +29,17 @@ function textTie(x) {
 let round = 0;
 function currentRound() {
     round += 1;
-    console.log(round);
-    // document.getElementById('round-count').textContent = round;
+    // console.log(round);
     return round;
 }
 
 // capture player choice
-let playerChoice;
 function getPlayerChoice() {
     playerChoice = this.getAttribute('data-choice');
     return playerChoice;
 }
 
 // create computer choice
-let computerChoice;
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3) + 1;
     switch (randInt) {
@@ -51,45 +56,60 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+// point-scoring logic
+function score(winner) {
+    if (winner === 'player') {
+        playerScore++;
+        playerScoreHole.textContent = playerScore;
+        result = "+1 to player";
+    } else if (winner === 'computer') {
+        computerScore++;
+        compScoreHole.textContent = computerScore;
+        result = "+1 to computer";
+    } else if (winner === 'tie') {
+        result = "A tie!"
+    }
+}
+
 // compare values
-function playGame(playerSelection, computerSelection) {
-    switch (playerSelection) {
-        case "rock":
-            switch (computerSelection) {
-                case "rock":
-                    return "tie";
+function playGame() {
+    switch (playerChoice) {
+        case "🪨":
+            switch (computerChoice) {
+                case "🪨": // tie
+                    score('tie');
                     break;
-                case "paper":
-                    return "lose";
+                case "📃": // comp win
+                    score('computer');
                     break;
-                case "scissors":
-                    return "win";
+                case "✂️": // player win
+                    score('player');
                     break;
             };
             break;
-        case "paper":
-            switch (computerSelection) {
-                case "paper":
-                    return "tie";
+        case "📃":
+            switch (computerChoice) {
+                case "📃": // tie
+                    score('tie');    
                     break;
-                case "scissors":
-                    return "lose";
+                case "✂️": // comp win
+                    score('computer');
                     break;
-                case "rock":
-                    return "win";
+                case "🪨": // player win
+                    score('player');
                     break;
             }
             break;
-        case "scissors":
-            switch (computerSelection) {
-                case "scissors":
-                    return "tie";
+        case "✂️":
+            switch (computerChoice) {
+                case "✂️": // tie
+                    score('tie');    
                     break;
-                case "rock":
-                    return "lose";
+                case "🪨": // comp win
+                    score('computer');
                     break;
-                case "paper":
-                    return "win";
+                case "📃": // player win
+                    score('player');
                     break;
             }
             break;
@@ -98,7 +118,7 @@ function playGame(playerSelection, computerSelection) {
 
 function makeRoundSummary() {
     const newRound = document.createElement('div');
-    newRound.innerHTML = `<p class="make-red">Round ${round}</p><p>You chose ${playerChoice}</p><p>Computer chose ${computerChoice}</p><p>THE RESULT</p>`;
+    newRound.innerHTML = `<p class="make-red">Round ${round}</p><p>You chose ${playerChoice}</p><p>Computer chose ${computerChoice}</p><p>${result}</p>`;
     document.getElementById('play-history').appendChild(newRound);
 }
 
@@ -107,5 +127,6 @@ buttons.forEach(button => {
     button.addEventListener('click', currentRound);
     button.addEventListener('click', getPlayerChoice);
     button.addEventListener('click', getComputerChoice);
+    button.addEventListener('click', playGame);
     button.addEventListener('click', makeRoundSummary);
 });
