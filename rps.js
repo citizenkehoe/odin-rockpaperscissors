@@ -122,6 +122,24 @@ function makeRoundSummary() {
     document.getElementById('play-history').appendChild(newRound);
 }
 
+function endTheGame() {
+    if (playerScore >= 5 || computerScore >= 5) {
+        document.getElementById('buttons').remove();
+        let addToThis = document.getElementById('main-copy');
+        let h2 = document.createElement('h2');
+        let p = document.createElement('p');
+        addToThis.append(h2);
+        addToThis.append(p);
+        if (playerScore >= 5) {
+            h2.textContent = 'You have prevailed!';
+            p.textContent = 'Disaster, this day, has been averted. Be with the people; you are their savior.';
+        } else if (computerScore >= 5) {
+            h2.textContent = 'The computer has triumphed.';
+            p.textContent = 'Go home and hold your loved ones. Do not dwell on today\'s failures.';
+        }
+    }
+}
+
 let buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('click', currentRound);
@@ -129,4 +147,6 @@ buttons.forEach(button => {
     button.addEventListener('click', getComputerChoice);
     button.addEventListener('click', playGame);
     button.addEventListener('click', makeRoundSummary);
+    button.addEventListener('click', endTheGame)
 });
+
