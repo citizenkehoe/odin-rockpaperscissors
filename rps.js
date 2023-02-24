@@ -125,15 +125,27 @@ function makeRoundSummary() {
 function endTheGame() {
     if (playerScore >= 5 || computerScore >= 5) {
         document.getElementById('buttons').remove();
+        
         let addToThis = document.getElementById('main-copy');
+        
+        let div = document.createElement('div');
+        div.classList.add('winner-section');
+        
         let h2 = document.createElement('h2');
+        h2.classList.add('winner-header');
+        
         let p = document.createElement('p');
-        addToThis.append(h2);
-        addToThis.append(p);
+        
+        addToThis.append(div);
+        div.append(h2);
+        div.append(p);
+        
         if (playerScore >= 5) {
+            div.classList.add('make-green');
             h2.textContent = 'You have prevailed!';
             p.textContent = 'Disaster, this day, has been averted. Be with the people; you are their savior.';
         } else if (computerScore >= 5) {
+            div.classList.add('make-red');
             h2.textContent = 'The computer has triumphed.';
             p.textContent = 'Go home and hold your loved ones. Do not dwell on today\'s failures.';
         }
